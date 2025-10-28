@@ -10,8 +10,8 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+foreach (glob(__DIR__ . '/web/*.php') as $file) {
+    require $file;
+}
 
-require __DIR__.'/settings.php';
+require __DIR__ . '/settings.php';
